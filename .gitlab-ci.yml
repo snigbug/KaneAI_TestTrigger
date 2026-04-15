@@ -6,9 +6,8 @@ kane_ai_execution:
   image: node:20-alpine
     
   before_script:
-    # Install dependencies for polling (curl, jq) and the node script (axios)
     - apk add --no-cache curl jq
-    - npm install axios
+    - npm install
 
   script:
     # 1) Run the Node Orchestrator

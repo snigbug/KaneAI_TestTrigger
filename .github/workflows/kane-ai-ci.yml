@@ -29,7 +29,7 @@ jobs:
 
       - name: Install Node Dependencies
         run: |
-          npm install axios
+          npm install
 
       - name: Run Node Orchestrator
         run: |
