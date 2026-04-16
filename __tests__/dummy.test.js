@@ -189,22 +189,16 @@ async function triggerKaneAI(runId) {
 }
 
 // MAIN ORCHESTRATOR
-(async () => {
-    try {
-        // 1. Get Cases
-        const testCaseInfo = await getTestCaseIdByTitle(TARGET_TITLE);
+test('Kane AI orchestration', async () => {
+    // 1. Get Cases
+    const testCaseInfo = await getTestCaseIdByTitle(TARGET_TITLE);
 
-        // 2. Get Environment
-        const environmentObjects = await getEnvironmentsByName(TARGET_ENV_NAMES, testCaseInfo);
+    // 2. Get Environment
+    const environmentObjects = await getEnvironmentsByName(TARGET_ENV_NAMES, testCaseInfo);
 
-        // 3. Create Run
-        const runId = await createAndPopulateTestRun(testCaseInfo, environmentObjects);
+    // 3. Create Run
+    const runId = await createAndPopulateTestRun(testCaseInfo, environmentObjects);
 
-        // 4. Trigger Execution
-        await triggerKaneAI(runId);
-
-    } catch (error) {
-        console.error("!!! orchestration failed !!!");
-        process.exit(1);
-    }
-})();
+    // 4. Trigger Execution
+    await triggerKaneAI(runId);
+}, 120000);
